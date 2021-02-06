@@ -1,102 +1,277 @@
 {
-    "pathToChromeDriver": "E:\\SIDDHANT\\Freelancing\\chromedriver",
-    "website": {
-        "codoil": {
-            "url": "https://codoil.com/",
-            "search_params": [
-                {
-                    "zipcode": "01983",
-                    "region": "Essex, MA"
-                },
-                {
-                    "zipcode": "01754",
-                    "region": "Middlesex, MA"
-                },
-                {
-                    "zipcode": "06438",
-                    "region": "Middlesex, CT"
-                },
-                {
-                    "zipcode": "06501",
-                    "region": "New Haven, CT"
-                },
-                {
-                    "zipcode": "02911",
-                    "region": "Providence, RI"
-                },
-                {
-                    "zipcode": "03841",
-                    "region": "Rockingham, NH"
-                },
-                {
-                    "zipcode": "06281",
-                    "region": "Windham, CT"
-                },
-                {
-                    "zipcode": "01504",
-                    "region": "Worcester, MA"
-                },
-                {
-                    "zipcode": "06812",
-                    "region": "Fairfield, CT"
-                },
-                {
-                    "zipcode": "06002",
-                    "region": "Hartford CT"
-                },
-                {
-                    "zipcode": "06905",
-                    "region": "Stamford CT"
-                },
-                {
-                    "zipcode": "06359",
-                    "region": "Southern RI / CT"
-                },
-                {
-                    "zipcode": "02360",
-                    "region": "Cape"
-                },
-                {
-                    "zipcode": "12033",
-                    "region": "Eastern NY"
-                },
-                {
-                    "zipcode": "17020",
-                    "region": "PA"
-                }
-            ],
-            "selectors": {
-                "home_page_load_wait": {
-                    "xpath": "//*[@id='zipcodebasedprice']"
-                },
-                "fieldset": {
-                    "xpath": "/html/body/div[4]/div/form/fieldset"
-                },
-                "zipcode_text": {
-                    "id": "number"
-                },
-                "zipcode_button": {
-                    "class": "zipcode-btn"
-                },
-                "result_page_load_wait": {
-                    "id": "zipcodePriceSection"
-                },
-                "result_container": {
-                    "id": "zipcodePriceSection"
-                },
-                "result_lists": {
-                    "class": "gallen-details"
-                },
-                "result_text": {
-                    "class": "gallon-title"
-                },
-                "result_text_value": {
-                    "text": "150-199 gallons"
-                },
-                "result_price": {
-                    "class": "price"
-                }
-            }
+  "pathToChromeDriver": "E:\\SIDDHANT\\Freelancing\\chromedriver",
+  "website": {
+    "codoil": {
+      "url": "https://codoil.com/",
+      "search_params": [
+        {
+          "zipcode": "01983",
+          "region": "Essex, MA"
+        },
+        {
+          "zipcode": "01754",
+          "region": "Middlesex, MA"
+        },
+        {
+          "zipcode": "06438",
+          "region": "Middlesex, CT"
+        },
+        {
+          "zipcode": "06501",
+          "region": "New Haven, CT"
+        },
+        {
+          "zipcode": "02911",
+          "region": "Providence, RI"
+        },
+        {
+          "zipcode": "03841",
+          "region": "Rockingham, NH"
+        },
+        {
+          "zipcode": "06281",
+          "region": "Windham, CT"
+        },
+        {
+          "zipcode": "01504",
+          "region": "Worcester, MA"
+        },
+        {
+          "zipcode": "06812",
+          "region": "Fairfield, CT"
+        },
+        {
+          "zipcode": "06002",
+          "region": "Hartford CT"
+        },
+        {
+          "zipcode": "06905",
+          "region": "Stamford CT"
+        },
+        {
+          "zipcode": "06359",
+          "region": "Southern RI / CT"
+        },
+        {
+          "zipcode": "02360",
+          "region": "Cape"
+        },
+        {
+          "zipcode": "12033",
+          "region": "Eastern NY"
+        },
+        {
+          "zipcode": "17020",
+          "region": "PA"
         }
+      ],
+      "selectors": {
+        "home_page_load_wait": {
+          "xpath": "//*[@id='zipcodebasedprice']"
+        },
+        "fieldset": {
+          "xpath": "/html/body/div[4]/div/form/fieldset"
+        },
+        "zipcode_text": {
+          "id": "number"
+        },
+        "zipcode_button": {
+          "class": "zipcode-btn"
+        },
+        "result_page_load_wait": {
+          "id": "zipcodePriceSection"
+        },
+        "result_container": {
+          "id": "zipcodePriceSection"
+        },
+        "result_lists": {
+          "class": "gallen-details"
+        },
+        "result_text": {
+          "class": "gallon-title"
+        },
+        "result_text_value": {
+          "text": "150-199 gallons"
+        },
+        "result_price": {
+          "class": "price"
+        }
+      }
+    },
+    "cashheatingoil": {
+      "url": "https://cashheatingoil.com/",
+      "search_params": [
+        {
+          "zipcode": "06438",
+          "region": "Middlesex, CT"
+        },
+        {
+          "zipcode": "06501",
+          "region": "New Haven, CT"
+        },
+        {
+          "zipcode": "02911",
+          "region": "Providence, RI"
+        },
+        {
+          "zipcode": "06281",
+          "region": "Windham, C"
+        },
+        {
+          "zipcode": "01504",
+          "region": "Worcester, MA"
+        },
+        {
+          "zipcode": "06812",
+          "region": "Fairfield, CT"
+        },
+        {
+          "zipcode": "06750",
+          "region": "Litchfield CT"
+        },
+        {
+          "zipcode": "06002",
+          "region": "Hartford C"
+        },
+        {
+          "zipcode": "06082",
+          "region": "Hartford C"
+        },
+        {
+          "zipcode": "06905",
+          "region": "Stamford C"
+        },
+        {
+          "zipcode": "06854",
+          "region": "Stamford C"
+        },
+        {
+          "zipcode": "06840",
+          "region": "Stamford C"
+        },
+        {
+          "zipcode": "06359",
+          "region": "Eastern CT"
+        },
+        {
+          "zipcode": "02360",
+          "region": "Cape"
+        },
+        {
+          "zipcode": "12033",
+          "region": "Eastern NY"
+        }
+      ],
+      "selectors": {
+        "home_page_load_wait": {
+          "id": "txtzipcode"
+        },
+        "fieldset": {
+          "xpath": "/html/body/div/div[2]/div/div[2]/div[2]/div[2]/div[1]/div[2]/form/div[2]/div"
+        },
+        "zipcode_text": {
+          "id": "txtzipcode"
+        },
+        "zipcode_button": {
+          "id": "btnsubmit"
+        },
+        "result_page_load_wait": {
+          "class": "boxlisting"
+        },
+        "result_container": {
+          "class": "boxlisting"
+        },
+        "result_tables": {
+          "class": "paywithcash"
+        },
+        "result_rows": {
+          "tag_name": "tr"
+        },
+        "result_columns": {
+          "tag_name": "td"
+        },
+        "result_text": {
+          "class": "gallon-title"
+        },
+        "result_text_value": {
+          "text": "150-199 gallons"
+        },
+        "result_price": {
+          "class": "price"
+        }
+      }
+    },
+    "cheapestoil": {
+      "url": "https://cashheatingoil.com/",
+      "search_params": [
+        {
+          "zipcode": "null",
+          "region": "PA",
+          "url": "https://cheapestoil.com/heating-oil-prices/York-PA"
+        },
+        {
+          "zipcode": null,
+          "region": "Eastern NY",
+          "url": "https://cheapestoil.com/heating-oil-prices/SaratogaNY"
+        },
+        {
+          "zipcode": null,
+          "region": "Hartford, CT",
+          "url": "https://cheapestoil.com/heating-oil-prices/Hartford-CT"
+        },
+        {
+          "zipcode": null,
+          "region": "Litchfield, CT",
+          "url": "https://cheapestoil.com/heating-oil-prices/Litchfield-CT"
+        },
+        {
+          "zipcode": null,
+          "region": "Tolland, CT",
+          "url": "https://cheapestoil.com/heating-oil-prices/Tolland-CT"
+        },
+        {
+          "zipcode": null,
+          "region": "New London, CT",
+          "url": "https://cheapestoil.com/heating-oil-prices/NewLondon-CT"
+        },
+        {
+          "zipcode": null,
+          "region": "Suffolk / Norfolk, MA",
+          "url": "https://cheapestoil.com/heating-oil-prices/SuffolkCounty"
+        },
+        {
+          "zipcode": null,
+          "region": "Hampden, MA",
+          "url": "https://cheapestoil.com/heating-oil-prices/Hampden"
+        },
+        {
+          "zipcode": null,
+          "region": "Cumberland, ME",
+          "url": "https://cheapestoil.com/heating-oil-prices/Cumberland-PA"
+        },
+        {
+          "zipcode": null,
+          "region": "Hilsborough, NH",
+          "url": "https://cheapestoil.com/heating-oil-prices/Pennsylvania"
+        }
+      ],
+      "selectors": {
+        "result_page_load_wait": {
+          "id": "MainContent_updPrices"
+        },
+        "rows_odd": {
+          "class": "pricegrid"
+        },
+        "rows_even": {
+          "class": "pricegridalt"
+        },
+        "supplier_a": {
+          "class": "pricegridsupplier"
+        },
+        "price_span": {
+          "class": "price150"
+        }
+      }
     }
+  }
 }
