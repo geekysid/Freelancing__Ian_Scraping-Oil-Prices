@@ -1,0 +1,102 @@
+{
+    "pathToChromeDriver": "E:\\SIDDHANT\\Freelancing\\chromedriver",
+    "website": {
+        "codoil": {
+            "url": "https://codoil.com/",
+            "search_params": [
+                {
+                    "zipcode": "01983",
+                    "region": "Essex, MA"
+                },
+                {
+                    "zipcode": "01754",
+                    "region": "Middlesex, MA"
+                },
+                {
+                    "zipcode": "06438",
+                    "region": "Middlesex, CT"
+                },
+                {
+                    "zipcode": "06501",
+                    "region": "New Haven, CT"
+                },
+                {
+                    "zipcode": "02911",
+                    "region": "Providence, RI"
+                },
+                {
+                    "zipcode": "03841",
+                    "region": "Rockingham, NH"
+                },
+                {
+                    "zipcode": "06281",
+                    "region": "Windham, CT"
+                },
+                {
+                    "zipcode": "01504",
+                    "region": "Worcester, MA"
+                },
+                {
+                    "zipcode": "06812",
+                    "region": "Fairfield, CT"
+                },
+                {
+                    "zipcode": "06002",
+                    "region": "Hartford CT"
+                },
+                {
+                    "zipcode": "06905",
+                    "region": "Stamford CT"
+                },
+                {
+                    "zipcode": "06359",
+                    "region": "Southern RI / CT"
+                },
+                {
+                    "zipcode": "02360",
+                    "region": "Cape"
+                },
+                {
+                    "zipcode": "12033",
+                    "region": "Eastern NY"
+                },
+                {
+                    "zipcode": "17020",
+                    "region": "PA"
+                }
+            ],
+            "selectors": {
+                "home_page_load_wait": {
+                    "xpath": "//*[@id='zipcodebasedprice']"
+                },
+                "fieldset": {
+                    "xpath": "/html/body/div[4]/div/form/fieldset"
+                },
+                "zipcode_text": {
+                    "id": "number"
+                },
+                "zipcode_button": {
+                    "class": "zipcode-btn"
+                },
+                "result_page_load_wait": {
+                    "id": "zipcodePriceSection"
+                },
+                "result_container": {
+                    "id": "zipcodePriceSection"
+                },
+                "result_lists": {
+                    "class": "gallen-details"
+                },
+                "result_text": {
+                    "class": "gallon-title"
+                },
+                "result_text_value": {
+                    "text": "150-199 gallons"
+                },
+                "result_price": {
+                    "class": "price"
+                }
+            }
+        }
+    }
+}
