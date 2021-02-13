@@ -1,5 +1,8 @@
 {
-  "pathToChromeDriver": "E:\\SIDDHANT\\Freelancing\\chromedriver",
+  "pathToChromeDriver": "/Users/crystalimage/Documents/Python/Freelancing/chromedriver",
+  "google_sheet_cred": "GoogleSheet_Cred/google_sheet_cred.json",
+  "google_sheet_name": "Oil_Prices",
+  "pathToScript": "/Users/crystalimage/Documents/Python/Freelancing/Ian",
   "website": {
     "codoil": {
       "url": "https://codoil.com/",

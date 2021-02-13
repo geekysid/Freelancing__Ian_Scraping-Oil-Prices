@@ -22,12 +22,18 @@ from colorama import init
 from termcolor import cprint
 import time, json, os, sys
 
+# for google sheets
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
+
 
 # global variables
 DATA = {}
 CONFIG_DATA = {}
 WAIT_TIME = 10
 BROWSER = None
+PATH =  
+print(PATH)
 
 
 # just fro decoration
@@ -45,20 +51,49 @@ def intro_deco():
     print()
 
 
+# Update Oil Prices in the google sheet
+class GoogleSheet_Updator(object):
+
+    def __init__(self):
+        self.row_num = 2
+        scope = [
+                "https://spreadsheets.google.com/feeds",
+                "https://www.googleapis.com/auth/spreadsheets",
+                "https://www.googleapis.com/auth/drive.file",
+                "https://www.googleapis.com/auth/drive"
+            ]
+
+        creds = ServiceAccountCredentials.from_json_keyfile_name(f"{PATH}/{CONFIG_DATA['google_sheet_cred']}", scope)
+        client = gspread.authorize(creds)
+        self.sheet = client.open(CONFIG_DATA['google_sheet_name']).sheet1
+
+
+    def update_spreadsheet(self, website):
+        # for product in self.product_list:
+        #     self.sheet.insert_row([product['title'], product['asin'], product['url'], product['discounted_price'], product['original_price'], product['savings'], product['amazon_prime'], product['rating'], product['delivery']], row_num)
+
+        for oil_list in DATA[website]:
+            self.sheet.insert_row([oil_list['website'], oil_list['region'], oil_list['zipcode'], oil_list['date'], oil_list['price']], self.row_num)
+
+            self.row_num += 1
+
+
 # getting information from config file
 def initializer():
     global CONFIG_DATA
     global DATA
+    global PATH
 
-    if os.path.exists(f'{os.getcwd()}/config_selector.json'):
-        with open (f'{os.getcwd()}/config_selector.json', 'r') as r:
+    if os.path.exists(f'{PATH}/config_selector.json'):
+        with open (f'{PATH}/config_selector.json', 'r') as r:
             CONFIG_DATA = json.load(r)
+            PATH = CONFIG_DATA['pathToScript']
 
-    if os.path.exists(f'{os.getcwd()}/Data/output.json'):
-        with open (f'{os.getcwd()}/Data/output.json', 'r') as r:
-            DATA = json.load(r)
-            # print(json.dumps(DATA, indent=4))
-            # input()
+    # if os.path.exists(f'{os.getcwd()}/Data/output.json'):
+    #     with open (f'{os.getcwd()}/Data/output.json', 'r') as r:
+    #         DATA = json.load(r)
+    #         # print(json.dumps(DATA, indent=4))
+    #         # input()
 
 
 # Setting up webdriver
@@ -82,7 +117,7 @@ def get_browser(headless=False):
 
 # save Data to JSON
 def save_json():
-    with open('Data/output.json', 'w') as file:
+    with open(f'{PATH}/Data/output.json', 'w') as file:
         json.dump(DATA, file)
 
 
@@ -142,28 +177,39 @@ def page_load_wait(selector):
 def add_data_to_json(website, zipcode, region, price):
     global DATA
 
-    key =  region if website == 'cheapestoil' else zipcode
+    if not website in DATA.keys():
+        DATA[website] = []
 
-    if website in DATA.keys():
-        if key in DATA[website].keys():
-            DATA[website][key]["price"][datetime.today().strftime('%Y-%m-%d')] = price
-        else:
-             DATA[website][key] = {
-            "zipcode": None if website == 'cheapestoil' else zipcode,
-            "region": region,
-            "price": {
-                datetime.today().strftime('%Y-%m-%d'): price
-            }
-        }
-    else:
-        DATA[website] = {}
-        DATA[website][key] = {
-            "zipcode": None if website == 'cheapestoil' else zipcode ,
-            "region": region,
-            "price": {
-                datetime.today().strftime('%Y-%m-%d'): price
-            }
-        }
+    DATA[website].append({
+        "website": website.upper(),
+        "zipcode": None if website == 'cheapestoil' else zipcode ,
+        "region": region,
+        "date": datetime.today().strftime('%Y-%m-%d'),
+        "price": price
+    })
+
+    # key =  region if website == 'cheapestoil' else zipcode
+
+    # if website in DATA.keys():
+    #     if key in DATA[website].keys():
+    #         DATA[website][key]["price"][datetime.today().strftime('%Y-%m-%d')] = price
+    #     else:
+    #          DATA[website][key] = {
+    #         "zipcode": None if website == 'cheapestoil' else zipcode,
+    #         "region": region,
+    #         "price": {
+    #             datetime.today().strftime('%Y-%m-%d'): price
+    #         }
+    #     }
+    # else:
+    #     DATA[website] = {}
+    #     DATA[website][key] = {
+    #         "zipcode": None if website == 'cheapestoil' else zipcode ,
+    #         "region": region,
+    #         "price": {
+    #             datetime.today().strftime('%Y-%m-%d'): price
+    #         }
+    #     }
     save_json()
 
 
@@ -194,7 +240,7 @@ def get_oil_price(selectors, website):
                 return min_price
                 # input()
 
-        # CHEAPEST OIL
+        # CHEAPEST-OIL
         elif website == 'cheapestoil':
             result_divs1 = get_elements(selectors['rows_odd'])
             result_divs2 = get_elements(selectors['rows_even'])
@@ -277,11 +323,15 @@ def get_data_from_website(website):
 
 # getting required data from website
 def get_required_data():
+    google_sheet = GoogleSheet_Updator()
+
     for website in CONFIG_DATA['website'].keys():
-        cprint(f'  [+] {website.upper()}', 'blue', attrs=['bold'])
+        cprint(f'\n  [+] {website.upper()} ', 'blue', 'on_white', attrs=['bold'])
+        print()
         # if website == 'codoil' or website == 'cashheatingoil':
         #     continue
         get_data_from_website(website)
+        google_sheet.update_spreadsheet(website)
 
 
 # executing script only if its not imported
